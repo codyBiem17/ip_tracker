@@ -16,7 +16,8 @@ const MapArea = ({center}) => {
     return (
         <MapContainer center={center} zoom={13} zoomControl={false}>
             <TileLayer
-                url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png"
+                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <Marker position={center} icon={locator} />
         </MapContainer>
