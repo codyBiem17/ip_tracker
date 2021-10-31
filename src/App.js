@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import Loader from "react-loader-spinner";
 import 'leaflet/dist/leaflet.css'
 import './App.css';
 import { IPAddress, MapArea } from './components'
@@ -21,12 +22,13 @@ function App() {
 
     const handleSubmit = (e) =>{
         e.preventDefault()
+        const regex = /([a-z0-9]+\.)*[a-z0-9]+\.[a-z]+/
+        const domainNameIp = regex.test(inputRef.current.value) ? 'domain' : 'ipAddress'
         const domainIP = async () => {
             try {
-                const url = `https://geo.ipify.org/api/v1?apiKey=${REACT_APP_GEO_API_KEY}&ipAddress=${inputRef.current.value}`
+                const url = `https://geo.ipify.org/api/v1?apiKey=${REACT_APP_GEO_API_KEY}&${domainNameIp}=${inputRef.current.value}`
                 const getUrlData = await axios.get(url) 
-                console.log(getUrlData.data)
-                setValue(getUrlData.data.ip)
+                setValue(inputRef.current.value)
                 setCurrentIp(getUrlData.data)
                 setLoading(false)
             }
@@ -60,7 +62,18 @@ function App() {
     return ( 
         <>
             {
-                loading ? <p>Loading...please wait</p> :
+                loading ? 
+                <div className="fixed top-1/2 left-1/2 transform
+                    -translate-x-1/2 -translate-y-1/2">
+        
+                    <Loader
+                        type="Grid"
+                        color="white"
+                        height={100}
+                        width={100}
+                    />
+                </div>
+                :
                 <div className = "App">
                     <IPAddress 
                         currentIp={currentIp} 
@@ -70,7 +83,7 @@ function App() {
                         ref={inputRef}
                     />
                     <div id="mapid" className="h-screen w-full relative z-0">
-                        <MapArea center={currentIp.ip && [currentIp.location.lat, currentIp.location.lng]} />
+                        <MapArea center={[currentIp.location.lat, currentIp.location.lng]} />
                     </div>
                 </div>
             }

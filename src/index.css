@@ -6,7 +6,9 @@
 
 body{
   font-size: 18px;
-  color: rgb(150, 150, 150)
+  color: rgb(150, 150, 150);
+  height: 100vh;
+  background: linear-gradient(to right, rgb(25, 25, 112), rgb(100, 149, 237));
 }
 
 button{
