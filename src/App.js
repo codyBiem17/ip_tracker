@@ -22,8 +22,12 @@ function App() {
 
     const handleSubmit = (e) =>{
         e.preventDefault()
-        const regex = /([a-z0-9]+\.)*[a-z0-9]+\.[a-z]+/
-        const domainNameIp = regex.test(inputRef.current.value) ? 'domain' : 'ipAddress'
+        const regex = /(([a-z0-9]+\.)*[a-z0-9]+\.[a-z]+)/
+        const url = inputRef.current.value
+        const extractUrl = url.replace('http://', '').replace('https://','').split(/[/?#]/)[0]
+        inputRef.current.value = extractUrl
+        const domainNameIp = regex.test(inputRef.current.value) || inputRef.current.value ? 'domain' : 'ipAddress'
+        
         const domainIP = async () => {
             try {
                 const url = `https://geo.ipify.org/api/v1?apiKey=${REACT_APP_GEO_API_KEY}&${domainNameIp}=${inputRef.current.value}`
@@ -31,9 +35,11 @@ function App() {
                 setValue(inputRef.current.value)
                 setCurrentIp(getUrlData.data)
                 setLoading(false)
+                console.log(extractUrl)
             }
             catch(err){
-                console.log(err.getUrlData.data.messages)
+                console.log(extractUrl)
+                alert('ooopss this is an invalid url')
             }
         }
         domainIP()
@@ -83,7 +89,7 @@ function App() {
                         ref={inputRef}
                     />
                     <div id="mapid" className="h-screen w-full relative z-0">
-                        <MapArea center={[currentIp.location.lat, currentIp.location.lng]} />
+                        <MapArea center={currentIp && [currentIp.location.lat, currentIp.location.lng]} />
                     </div>
                 </div>
             }
