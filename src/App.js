@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import Loader from "react-loader-spinner";
+// import Loader from "react-loader-spinner";
 import 'leaflet/dist/leaflet.css'
 import './App.css';
 import { IPAddress, MapArea } from './components'
