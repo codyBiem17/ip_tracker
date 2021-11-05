@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import Loader from "react-loader-spinner";
+// import Loader from "react-loader-spinner";
 import 'leaflet/dist/leaflet.css'
 import './App.css';
 import { IPAddress, MapArea } from './components'
@@ -68,17 +68,17 @@ function App() {
     return ( 
         <>
             {
-                loading ? 
-                <div className="fixed top-1/2 left-1/2 transform
-                    -translate-x-1/2 -translate-y-1/2">
+                loading ? 'loading...'
+                // <div className="fixed top-1/2 left-1/2 transform
+                //     -translate-x-1/2 -translate-y-1/2">
         
-                    <Loader
-                        type="Grid"
-                        color="white"
-                        height={100}
-                        width={100}
-                    />
-                </div>
+                //     <Loader
+                //         type="Grid"
+                //         color="white"
+                //         height={100}
+                //         width={100}
+                //     />
+                // </div>
                 :
                 <div className = "App">
                     <IPAddress 
