@@ -1,16 +1,15 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Loader from "react-loader-spinner";
 import 'leaflet/dist/leaflet.css'
 import './App.css';
 import { IPAddress, MapArea } from './components'
-import { useState } from "react/cjs/react.development";
 import axios from 'axios'
 
 
 
 function App() {
     const {REACT_APP_GEO_API_KEY} = process.env
-    const [currentIp, setCurrentIp] = useState()
+    const [currentIp, setCurrentIp] = useState({})
     const [value, setValue] = useState()
     const [loading,setLoading] = useState(true)
 
