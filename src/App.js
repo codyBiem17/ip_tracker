@@ -10,7 +10,7 @@ import axios from 'axios'
 
 function App() {
     const {REACT_APP_GEO_API_KEY} = process.env
-    const [currentIp, setCurrentIp] = useState({})
+    const [currentIp, setCurrentIp] = useState()
     const [value, setValue] = useState()
     const [loading,setLoading] = useState(true)
 
