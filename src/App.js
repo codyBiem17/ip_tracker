@@ -69,8 +69,8 @@ function App() {
             {
                 loading ? 
                 <div className="fixed top-1/2 left-1/2 transform
-                    -translate-x-1/2 -translate-y-1/2">
-        
+                    -translate-x-1/2 -translate-y-1/2"
+                >        
                     <Loader
                         type="Grid"
                         color="white"
@@ -87,9 +87,12 @@ function App() {
                         handleSubmit={handleSubmit} 
                         ref={inputRef}
                     />
-                    <div id="mapid" className="h-screen w-full relative z-0">
-                        <MapArea center={[currentIp.location.lat, currentIp.location.lng]} />
-                    </div>
+
+                    { currentIp.location && 
+                        <div id="mapid" className="h-screen w-full relative z-0">
+                            <MapArea currentIp={currentIp} />
+                        </div>
+                    }
                 </div>
             }
         </>
