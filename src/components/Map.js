@@ -3,9 +3,9 @@ import { MapContainer, TileLayer, Marker } from 'react-leaflet'
 import { Icon } from "leaflet";
 import locationIcon from '../assets/images/icon-location.svg'
 
-const MapArea = ({center}) => {
+const MapArea = ({currentIp}) => {
 
-    console.log(center)
+    console.log(currentIp.location)
     const locator = new Icon({
         iconUrl: locationIcon,
         iconSize: [40, 50],
@@ -15,12 +15,17 @@ const MapArea = ({center}) => {
     })
 
     return (
-        <MapContainer center={center} zoom={13} zoomControl={false}>
+        <MapContainer 
+            center={[currentIp.location?.lat, currentIp.location?.lng]} 
+            zoom={13} 
+            zoomControl={false}
+            key={`${currentIp.location?.lat}${currentIp.location?.lng}`}
+        >
             <TileLayer
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker position={center} icon={locator} />
+            <Marker position={[currentIp.location?.lat, currentIp.location?.lng]} icon={locator} />
         </MapContainer>
     )
 }
