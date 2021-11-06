@@ -37,7 +37,7 @@ function App() {
                 console.log(extractUrl)
             }
             catch(err){
-                console.log(extractUrl)
+                // console.log(extractUrl)
                 alert('ooopss this is an invalid url')
             }
         }
@@ -88,7 +88,7 @@ function App() {
                         ref={inputRef}
                     />
                     <div id="mapid" className="h-screen w-full relative z-0">
-                        <MapArea center={currentIp && [currentIp.location.lat, currentIp.location.lng]} />
+                        <MapArea center={[currentIp.location.lat, currentIp.location.lng]} />
                     </div>
                 </div>
             }

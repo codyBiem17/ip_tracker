@@ -5,6 +5,7 @@ import locationIcon from '../assets/images/icon-location.svg'
 
 const MapArea = ({center}) => {
 
+    console.log(center)
     const locator = new Icon({
         iconUrl: locationIcon,
         iconSize: [40, 50],
