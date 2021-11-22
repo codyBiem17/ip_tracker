@@ -5,7 +5,7 @@ import locationIcon from '../assets/images/icon-location.svg'
 
 const MapArea = ({currentIp}) => {
 
-    console.log(currentIp.location)
+    // console.log(currentIp.location)
     const locator = new Icon({
         iconUrl: locationIcon,
         iconSize: [40, 50],
