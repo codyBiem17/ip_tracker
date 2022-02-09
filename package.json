@@ -1,5 +1,11 @@
 {
     "name": "ip_tracker",
+    "jest": {
+        "testMatch": [
+          "<rootDir>/src/**/*.test.{js,jsx,ts,tsx}",
+          "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,ts,tsx}"
+        ]
+    },
     "version": "0.1.0",
     "private": true,
     "dependencies": {
@@ -22,7 +28,7 @@
     "scripts": {
         "start": "react-dotenv && craco start",
         "build": "react-dotenv && craco build",
-        "test": "craco test",
+        "test": "craco test --watchAll=false",
         "eject": "react-scripts eject"
     },
     "eslintConfig": {
