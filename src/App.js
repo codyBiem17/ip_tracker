@@ -24,7 +24,6 @@ function App() {
         const urlInput = inputRef.current.value
         const regex = /(([a-z0-9]+\.)*[a-z0-9]+\.[a-z]+)/
         const extractUrl = urlInput.replace('http://', '').replace('https://','').split(/[/?#]/)[0]
-        // inputRef.current.value = extractUrl.toLowerCase()
         
         const domainNameIp = regex.test(urlInput)|| extractUrl ? 'domain' : 'ipAddress'
         
@@ -36,10 +35,8 @@ function App() {
                 setValue(inputRef.current.value)
                 setCurrentIp(getUrlData.data)
                 setLoading(false)
-                // console.log(extractUrl)
             }
             catch(err){
-                // console.log(extractUrl)
                 alert('ooopss this is an invalid url')
             }
         }

@@ -5,13 +5,11 @@ import locationIcon from '../assets/images/icon-location.svg'
 
 const MapArea = ({currentIp}) => {
 
-    // console.log(currentIp.location)
     const locator = new Icon({
         iconUrl: locationIcon,
         iconSize: [40, 50],
         iconAnchor: [23, 55],
         popupAnchor: [-3, -76]
-        // className: 'locator'
     })
 
     return (
